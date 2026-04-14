@@ -1,0 +1,41 @@
+
+---
+import "../styles/global.css"
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<!--Cabecera de la plantilla-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Estilos-->
+
+
+    <!--Título-->
+    <title>E.SOSA Electricidad</title>
+</head>
+
+<!--Cuerpo de la plantilla-->
+<body>
+
+    <!--Contenido principal del sitio-->
+    <slot/>
+
+</body>
+
+</html>
+
+<!-- Estilos generales del Sitio -->
+<style is:global>
+
+    :root {
+    --color-taller: #dc2626;
+    }
+
+    body {
+    background-color: #09090b;
+    color: white;
+    }
+
+</style>
