@@ -1,0 +1,50 @@
+[
+
+  {
+    "id": 1,
+    "titulo": "Escaneo y Diagnóstico Vehicular",
+    "descripcion": "Diagnóstico preciso con escáner multimarca de última generación para detectar fallas electrónicas en el acto.",
+    "beneficios": ["Lectura y borrado de fallas", "Análisis de sensores en vivo", "Reseteo de servicios"]
+  },
+
+  {
+    "id": 2,
+    "titulo": "Inyección Electrónica",
+    "descripcion": "Limpieza, calibración y reparación de inyectores para optimizar el consumo de combustible y la potencia del motor.",
+    "beneficios": [
+      "Restaura la potencia original del motor.",
+      "Optimiza y reduce el consumo de combustible.",
+      "Disminuye la emisión de gases contaminantes."
+    ]
+  },
+
+  {
+    "id": 3,
+    "titulo": "Arranques y Alternadores",
+    "descripcion": "Reparación integral del sistema de carga y arranque del vehículo con repuestos originales.",
+    "beneficios": ["Cambio de carbones y reguladores", "Bobinados", "Prueba en banco de carga"]
+  },
+
+  {
+    "id": 4,
+    "titulo": "Electricidad de Autos y Motos",
+    "descripcion": "Revisión, instalación y reparación del sistema eléctrico general: cableado, fusibles, iluminación, baterías y accesorios.",
+    "beneficios": [
+      "Conducción más segura con óptima iluminación y señalización.",
+      "Eliminación de cortocircuitos o fugas de corriente.",
+      "Funcionamiento confiable de todos los componentes eléctricos."
+    ]
+  },
+
+  {
+    "id": 5,
+    "titulo": "Electrónica Automotriz",
+    "descripcion": "Diagnóstico avanzado y reparación de módulos de control, redes de comunicación interna, sensores y actuadores del vehículo.",
+    "beneficios": [
+      "Solución a fallas de software e intermitencias complejas.",
+      "Restablecimiento de sistemas de seguridad como ABS y Airbags.",
+      "Eliminación de luces de advertencia en el tablero."
+    ]
+  }
+
+]

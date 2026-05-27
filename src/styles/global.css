@@ -1,1 +1,186 @@
 @import "tailwindcss";
+
+/* Esta línea le enseña a Tailwind v4 a usar la clase .dark para cambiar el tema */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =========================================
+   Configuración del Tema:
+   ========================================= */
+
+.permanent-marker-regular {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.story-script-regular {
+  font-family: "Story Script", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mr-dafoe-regular {
+  font-family: "Mr Dafoe", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@theme {
+  /* Nombramos nuestras fuentes */
+  --font-titulo: "Story Script", sans-serif;
+  --font-cuerpo: "Montserrat", sans-serif;
+
+  /* Nombramos nuestros colores personalizados */
+  --color-taller-rojo: #dc2626;
+  --color-taller-negro: #09090b;
+}
+
+/* =========================================
+   ESTILOS BASE (Fondo y tipografía general)
+   ========================================= */
+
+@layer base {
+    body {
+      /* MODO CLARO: Fondo gris casi blanco, texto oscuro.
+         MODO OSCURO: Fondo asfalto suave (zinc-900), texto blanco. */
+      @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300 min-h-screen flex flex-col;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      @apply text-zinc-900 dark:text-white transition-colors duration-300;
+    }
+
+    input, textarea, select {
+      @apply bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white transition-colors duration-300 focus:border-taller-rojo dark:focus:border-taller-rojo focus:ring-1 focus:ring-taller-rojo outline-none;
+    }
+}
+
+/* =========================================
+   Estilos de los componentes
+   ========================================= */
+@layer components {
+
+  /* --- Header / Cabecera del sitio --- */
+  
+  .header-dinamico {
+    @apply bg-gradient-to-r from-taller-rojo to-red-800 border-b border-red-900 
+           dark:from-zinc-950 dark:via-taller-negro dark:to-red-950/20 dark:border-taller-rojo dark:border-b-0 
+           transition-colors duration-300 relative;
+  }
+
+  .nav-enlace {
+    /* relative es necesario para que la línea roja se posicione respecto al texto */
+    @apply text-white hover:text-zinc-200 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 relative py-1;
+  }
+
+  /* EFECTO HOVER: Construcción de la línea base (invisible por defecto) */
+  .nav-enlace::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-full h-[2px] bg-white dark:bg-taller-rojo transform scale-x-0 origin-left transition-transform duration-300 ease-out;
+  }
+
+  /* EFECTO HOVER: La línea crece al 100% al pasar el mouse */
+  .nav-enlace:hover::after {
+    @apply scale-x-100;
+  }
+
+  .btn-contacto-dinamico {
+    @apply text-white border border-white hover:bg-white hover:text-taller-rojo 
+           dark:border-taller-rojo dark:hover:bg-taller-rojo dark:hover:text-white 
+           px-4 py-2 rounded transition-all duration-300;
+  }
+
+  .menu-lateral-dinamico {
+    @apply bg-zinc-50 border-l-2 border-taller-rojo dark:bg-taller-negro transition-colors duration-300;
+  }
+
+  .enlace-movil-dinamico {
+    @apply text-zinc-900 hover:text-taller-rojo dark:text-gray-300 dark:hover:text-white transition-colors duration-300;
+  }
+
+  /* --- CONTENEDOR PRINCIPAL --- */
+  .main-contenedor {
+    @apply flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12;
+  }
+
+  /* --- Cards / Tarjeta de Servicio --- */
+  .card-servicio-detalle {
+    @apply bg-white dark:bg-zinc-800 p-8 rounded-lg border-t-4 border-taller-rojo flex flex-col h-full relative overflow-hidden shadow-md dark:shadow-none transition-colors duration-300;
+  }
+
+  /* CORRECCIÓN: Hover dinámico según el modo (gris clarito en claro, gris oscuro en oscuro) */
+  .card-servicio-detalle:hover {
+    @apply hover:bg-zinc-100 dark:hover:bg-zinc-700 shadow-[0_10px_30px_rgba(220,38,38,0.1)] transition-colors duration-300;
+  }
+
+  .card-icono-wrapper {
+    @apply w-14 h-14 bg-zinc-100 dark:bg-taller-negro border border-zinc-200 dark:border-zinc-800 rounded-full flex items-center justify-center mb-6 text-taller-rojo transition-colors duration-300;
+  }
+
+  /* CORRECCIÓN: Contraste de texto adaptable */
+  .card-lista-beneficios {
+    @apply mt-6 space-y-3 text-sm text-zinc-600 dark:text-gray-400 border-t border-zinc-200 dark:border-zinc-800 pt-6 flex-grow transition-colors duration-300;
+  }
+
+  .card-beneficio-item {
+    @apply flex items-start gap-2;
+  }
+
+  /* --- Iconos del sitio --- */
+  .icono-destacado {
+    @apply text-4xl text-[#dc2626] mb-4 block;
+  }
+
+  .icono-mini {
+    @apply text-[#dc2626] text-lg mr-2;
+  }
+
+  /* --- Botones --- */
+  .btn-primario {
+    @apply font-cuerpo font-bold bg-[#dc2626] text-white px-8 py-4 rounded text-center uppercase tracking-wide transition-all duration-300;
+  }
+  
+  .btn-primario:hover {
+    @apply bg-red-700 scale-105 shadow-[0_0_15px_rgba(220,38,38,0.5)];
+  }
+
+  .btn-secundario {
+    @apply font-cuerpo font-bold bg-transparent border border-gray-600 text-zinc-800 dark:text-white px-8 py-4 rounded text-center uppercase tracking-wide transition-all duration-300;
+  }
+
+  .btn-secundario:hover {
+    @apply border-taller-rojo bg-zinc-100 dark:border-white dark:bg-zinc-800;
+  }
+
+  /* --- Footer / Pie de Página --- */
+  .footer-contenedor {
+    @apply bg-[#09090b] border-t-4 border-[#dc2626] text-gray-300 pt-16 pb-8 mt-20;
+  }
+
+  .footer-columna-titulo {
+    @apply text-lg text-white mb-6 uppercase tracking-widest border-b border-zinc-800 pb-2 inline-block;
+  }
+
+  .footer-lista-item {
+    @apply flex items-center mb-3 text-sm;
+  }
+
+  /* --- Página de Servicios --- */
+  .seccion-encabezado {
+    @apply text-center max-w-3xl mx-auto mb-16;
+  }
+
+  .seccion-subtitulo {
+    @apply font-cuerpo font-bold text-taller-rojo tracking-widest uppercase mb-4 block;
+  }
+
+  .grilla-servicios {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+
+  /*--Página de Contacto--*/
+  .tarjeta-contacto {
+    @apply bg-white dark:bg-zinc-800 p-6 md:p-8 rounded-lg shadow-md dark:shadow-none border border-zinc-200 dark:border-zinc-800 transition-colors duration-300;
+  }
+  
+}

@@ -1,0 +1,22 @@
+/* --- CONTENEDOR PRINCIPAL --- */
+
+  .main-contenedor {
+    /* 1. flex-grow: Esta es la clave. Si no hay contenido, esto hace que 
+      el contenedor crezca para llenar el espacio vacío entre el Header y el Footer. 
+    */
+    @apply flex-grow;
+
+    /* 2. Adaptabilidad de resolución: 
+      w-full: Ocupa el 100% del ancho disponible.
+      max-w-6xl: Tope máximo de ancho en pantallas muy grandes para que no se deforme.
+      mx-auto: Lo centra en la pantalla.
+    */
+    @apply w-full max-w-6xl mx-auto;
+
+    /* 3. Márgenes internos (Padding) para que no toque los bordes:
+      px-4: Margen lateral en celulares.
+      sm:px-6: Margen lateral un poco mayor en tablets.
+      py-8 md:py-12: Margen arriba/abajo, más amplio en pantallas de PC.
+    */
+    @apply px-4 sm:px-6 py-8 md:py-12;
+  }

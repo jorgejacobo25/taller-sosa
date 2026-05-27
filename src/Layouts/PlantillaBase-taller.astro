@@ -1,41 +1,39 @@
-
 ---
-import "../styles/global.css"
+import "../styles/estilos-taller.css";
+import "../styles/global.css";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<!--Cabecera de la plantilla-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Cabecera de la plantilla-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <!--Estilos-->
-
-
     <!--Título-->
     <title>E.SOSA Electricidad</title>
-</head>
+    
+  </head>
 
-<!--Cuerpo de la plantilla-->
-<body>
-
+  <!--Cuerpo de la plantilla-->
+  <body class="">
     <!--Contenido principal del sitio-->
-    <slot/>
-
-</body>
-
+    <slot />
+    <script src="https://kit.fontawesome.com/97267b1541.js" crossorigin="anonymous"></script>
+  </body>
+  
 </html>
 
-<!-- Estilos generales del Sitio -->
-<style is:global>
+<!-- Fuentes -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Permanent+Marker&family=Story+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mr+Dafoe&family=Permanent+Marker&family=Story+Script&display=swap');
 
-    :root {
-    --color-taller: #dc2626;
-    }
-
-    body {
-    background-color: #09090b;
-    color: white;
+:root {
+        --color-taller: #dc2626;
     }
 
 </style>
+
+<!-- Scripts -->

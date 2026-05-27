@@ -2,32 +2,97 @@
 ---
 
 <!--Header del sitio E.SOSA-->
-<header class="sticky top-0 z-50 bg-red-800 border-b-3 border-tallerRojo px-6 py-4 flex justify-between items-center shadow-lg">
-    
-    <div>
-        
-        <!-- Logo -->
-        <a href="#" class="text-3xl text-white tracking-wider flex items-center gap-2 hover:text-tallerRojo transition-colors">
-            <span class="text-tallerRojo">E.SOSA</span> Electricidad
+<header class="header-dinamico">
+
+    <div class="header-layout flex justify-between items-center py-4 px-6 max-w-7xl mx-auto">
+
+        <a href="/" class="relative z-50 block transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(220,38,38,0.6)]">
+            <img 
+                src="/Images/logo.png" 
+                alt="Logo E.SOSA Electricidad" 
+                class="h-14 sm:h-14 md:h-16 w-auto object-contain rounded-full border-2 border-white shadow-[0_0_15px_rgba(220,38,38,0.4)]"
+            />
         </a>
 
+        <nav class="hidden md:flex gap-8 items-center font-cuerpo font-bold uppercase tracking-wide text-sm">
+            <a href="/" class="nav-enlace">Inicio</a>
+            <a href="/servicios" class="nav-enlace">Servicios</a>
+            <a href="/nosotros" class="nav-enlace">El Taller</a>
+            <a href="/contacto" class="btn-contacto-dinamico">Contacto</a>
+            
+            <button class="btn-cambiar-tema text-white dark:text-gray-300 hover:text-zinc-200 dark:hover:text-taller-rojo transition-colors" aria-label="Cambiar tema">
+                <i class="fa-solid fa-moon text-xl block dark:hidden"></i> <i class="fa-solid fa-sun text-xl hidden dark:block"></i>  </button>
+        </nav>
+
+        <div class="md:hidden flex items-center gap-4 relative z-50">
+            
+            <button class="btn-cambiar-tema text-white dark:text-gray-300 hover:text-zinc-200 dark:hover:text-taller-rojo transition-colors" aria-label="Cambiar tema">
+                <span class="block dark:hidden"><i class="fa-solid fa-moon text-xl"></i></span>
+                <span class="hidden dark:block"><i class="fa-solid fa-sun text-xl"></i></span>
+            </button>
+
+            <button id="btn-menu" class="text-white hover:text-zinc-200 dark:hover:text-taller-rojo transition-colors p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+    <div id="menu-lateral" class="menu-lateral-dinamico fixed inset-y-0 right-0 w-64 shadow-2xl transform translate-x-full ease-in-out z-40 md:hidden flex flex-col pt-24 px-8">
+        <ul class="flex flex-col gap-8 font-cuerpo font-bold uppercase tracking-wide text-lg">
+            <li><a href="/" class="enlace-movil-dinamico">Inicio</a></li>
+            <li><a href="/servicios" class="enlace-movil-dinamico">Servicios</a></li>
+            <li><a href="/nosotros" class="enlace-movil-dinamico">El Taller</a></li>
+            <li class="mt-4">
+                <a href="/contacto" class="block text-center bg-taller-rojo text-white px-4 py-3 rounded shadow-[0_0_15px_rgba(220,38,38,0.5)]">Contacto</a>
+            </li>
+        </ul>
     </div>
     
-    <nav>
-
-        <!-- Enlaces de las secciones -->
-        <ul class="hidden md:flex gap-8 font-cuerpo font-bold text-gray-300 uppercase tracking-wide text-sm">
-            <li><a href="/" class="hover:text-tallerRojo transition-colors duration-300">Inicio</a></li>
-            <li><a href="/servicios" class="hover:text-tallerRojo transition-colors duration-300">Servicios</a></li>
-            <li><a href="/nosotros" class="hover:text-tallerRojo transition-colors duration-300">El Taller</a></li>
-            <li><a href="/contacto" class="hover:text-white hover:bg-tallerRojo px-4 py-2 rounded-md border border-tallerRojo transition-all duration-300">Contacto</a></li>
-        </ul>
-
-        <!-- Botón de contacto -->
-        <button class="md:hidden text-white hover:text-tallerRojo">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-    
-    </nav>
-
 </header>
+
+<script is:inline>
+
+    // 1. Buscamos todos los botones de tema (el de escritorio y el de móvil)
+    const botonesTema = document.querySelectorAll('.btn-cambiar-tema');
+    
+    // 2. Función que chequea el modo actual y lo invierte
+    const alternarTema = () => {
+        const html = document.documentElement;
+        html.classList.toggle('dark');
+        
+        // Guardamos la decisión del usuario en su navegador para la próxima vez
+        const esOscuro = html.classList.contains('dark');
+        localStorage.setItem('tema', esOscuro ? 'dark' : 'light');
+    };
+
+    // 3. Le asignamos la función a los botones cuando hacen clic
+    botonesTema.forEach(boton => boton.addEventListener('click', alternarTema));
+
+    // 4. (Opcional) Al cargar la página, revisamos si ya había elegido un tema antes
+    if (localStorage.getItem('tema') === 'dark' || (!('tema' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+
+    // Astro ejecuta este script del lado del cliente (en el navegador)
+    const btnMenu = document.getElementById('btn-menu');
+    const menuLateral = document.getElementById('menu-lateral');
+
+    // Verificamos que AMBOS elementos existan (que no sean null)
+    if (btnMenu && menuLateral) {
+        
+        // Si existen, recién ahí se les da interactividad
+        btnMenu.addEventListener('click', () => {
+            menuLateral.classList.toggle('translate-x-full');
+        });
+
+    } else {
+        // (Opcional) Un aviso de posible fallo futuro
+        console.warn('No se encontraron los elementos del menú móvil en el DOM.');
+    }
+
+</script>

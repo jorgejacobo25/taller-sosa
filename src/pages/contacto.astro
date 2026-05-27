@@ -1,0 +1,190 @@
+---
+import PlantillaBaseTaller from '../Layouts/PlantillaBase-taller.astro';
+import MapaTaller from '../Components/MapaTaller.astro';
+import HeaderTaller from '../Components/HeaderTaller.astro';
+import FooterTaller from '../Components/FooterTaller.astro';
+---
+
+<PlantillaBaseTaller>
+
+    <HeaderTaller/>
+
+    <main class="main-contenedor"> 
+
+        <div class="py-12 tarjeta-contacto">
+
+            <!-- Titulo de la Sección -->
+            <h1 class="font-titulo text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white text-center transition-colors duration-300 mb-2">
+                Solicitá tu <span class="text-taller-rojo">Turno</span>
+            </h1>
+
+            <!-- Formulario de Solicitud de Turno -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <section class="tarjeta-contacto border-t-4 border-taller-rojo">
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold mb-2 text-zinc-900 dark:text-white transition-colors duration-300">
+                        Agendar Turno / Consulta
+                    </h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm transition-colors duration-300">
+                        Completá los datos para agendar el escaneo o reparación de tu vehículo.
+                    </p>
+                </div>
+
+                <form class="space-y-5">
+
+                    <!-- Nombre completo del Usuario -->
+                    <div>
+                        
+                        <label for="nombre" class="block text-sm font-bold text-zinc-700 dark:text-zinc-300 mb-2 transition-colors duration-300">
+                            Nombre Completo
+                        </label>
+                        <input 
+                            type="text" 
+                            id="nombre" 
+                            name="nombre" 
+                            placeholder="Ej: Jorge Jacobo" 
+                            required 
+                            class="w-full p-3 rounded-md text-sm"
+                        />
+                    </div>
+
+                    <!-- Telefono del Usuario -->
+                    <div>
+                        <label for="telefono" class="block text-sm font-bold text-zinc-700 dark:text-zinc-300 mb-2 transition-colors duration-300">
+                            Teléfono / WhatsApp
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="telefono" 
+                            name="telefono" 
+                            placeholder="Ej: 2664XXXXXX" 
+                            required 
+                            class="w-full p-3 rounded-md text-sm"
+                        />
+                    </div>
+
+                    <!-- Tipo de Vehiculo -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="tipo-vehiculo" class="block text-sm font-bold text-zinc-700 dark:text-zinc-300 mb-2 transition-colors duration-300">
+                                Tipo de Vehículo
+                            </label>
+                            <select id="tipo-vehiculo" name="tipo_vehiculo" required class="w-full p-3 rounded-md text-sm cursor-pointer">
+                                <option value="" disabled selected>Seleccioná un tipo</option>
+                                <option value="auto">Automóvil / Camioneta</option>
+                                <option value="moto">Motocicleta</option>
+                            </select>
+                        </div>
+
+                        <!-- Servicio Según el tipo de Vehiculo -->
+                        <div>
+                            <label for="servicio" class="block text-sm font-bold text-zinc-700 dark:text-zinc-300 mb-2 transition-colors duration-300">
+                                Servicio Requerido
+                            </label>
+                            <select id="servicio" name="servicio" required disabled class="w-full p-3 rounded-md text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                                <option value="" disabled selected>Primero elegí el tipo</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- Descripción sobre la falla o Sintoma del Vehiculo -->
+                    <div>
+                        <label for="mensaje" class="block text-sm font-bold text-zinc-700 dark:text-zinc-300 mb-2 transition-colors duration-300">
+                            Síntomas o Falla del Vehículo
+                        </label>
+                        <textarea 
+                            id="mensaje" 
+                            name="mensaje" 
+                            rows="4" 
+                            placeholder="Contanos detalladamente qué le pasa al coche o moto (ej: no arranca, falla en frío, luz de check engine encendida...)" 
+                            required 
+                            class="w-full p-3 rounded-md text-sm resize-none"
+                        ></textarea>
+                    </div>
+
+
+                    <!-- Botón de Envío -->
+                    <div class="pt-2">
+                        <button type="submit" class="btn-primario w-full py-3 text-sm font-bold cursor-pointer">
+                            Solicitar Turno Real
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+                <!-- Mapa con la ubicación del taller -->
+                <section class="space-y-8">
+
+                    <MapaTaller/>
+                    
+                    <div class="bg-white dark:bg-zinc-900/50 p-6 rounded border-l-4 border-taller-rojo dark:border-zinc-700 shadow-md dark:shadow-none transition-colors duration-300">
+                        <h3 class="font-titulo text-zinc-900 dark:text-taller-rojo text-2xl mb-4 transition-colors duration-300">
+                            ¿Cómo llegar?
+                        </h3>
+                        
+                        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed transition-colors duration-300">
+                            Nos encontramos en la zona norte de la ciudad. El ingreso es directo y contamos con espacio para recepción de vehículos y motos. Si venís por la avenida principal, doblá en la esquina del centro comercial.
+                        </p>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </main>
+    
+    <FooterTaller/>
+
+</PlantillaBaseTaller>
+
+<!-- Scripts del Formulario de Contacto -->
+
+<script is:inline>
+    
+    // 1. Definimos las listas de servicios específicos para cada rubro
+    const serviciosPorVehiculo = {
+        auto: [
+            { value: "escaneo", label: "Escaneo Computarizado" },
+            { value: "inyeccion", label: "Inyección Electrónica" },
+            { value: "alternadores", label: "Arranques y Alternadores" },
+            { value: "baterias", label: "Control y Cambio de Baterías" },
+            { value: "luces", label: "Iluminación y Cortos Eléctricos" }
+        ],
+        moto: [
+            { value: "encendido", label: "Sistema de Encendido y Bobinas" },
+            { value: "bateria-moto", label: "Baterías y Reguladores de Voltaje" },
+            { value: "inyeccion-moto", label: "Diagnóstico de Inyección Moto" },
+            { value: "instalacion", label: "Instalación Eléctrica Completa" }
+        ]
+    };
+
+    // 2. Capturamos los selectores del HTML
+    const selectVehiculo = document.getElementById('tipo-vehiculo');
+    const selectServicio = document.getElementById('servicio');
+
+    // 3. Escuchamos cuando el usuario cambia de Auto a Moto o viceversa
+    if (selectVehiculo && selectServicio) {
+        selectVehiculo.addEventListener('change', (e) => {
+            const seleccion = e.target.value;
+            
+            // Limpiamos las opciones anteriores del segundo selector
+            selectServicio.innerHTML = '<option value="" disabled selected>Seleccioná el servicio</option>';
+            
+            // Habilitamos el selector de servicios
+            selectServicio.disabled = false;
+
+            // Cargamos los servicios correspondientes
+            serviciosPorVehiculo[seleccion].forEach(servicio => {
+                const option = document.createElement('option');
+                option.value = servicio.value;
+                option.textContent = servicio.label;
+                selectServicio.appendChild(option);
+            });
+        });
+    }
+</script>

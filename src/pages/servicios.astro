@@ -1,0 +1,47 @@
+---
+import { imageConfig } from "astro:assets"
+import PlantillaBaseTaller from "../Layouts/PlantillaBase-taller.astro"
+
+//Importaciones de Components:
+import HeaderTaller from "../Components/HeaderTaller.astro"
+import ServicioTaller from "../Components/ServicioTaller.astro"
+import FooterTaller from "../Components/FooterTaller.astro"
+
+import listaServicios from '../Data/servicios.json';
+
+---
+
+<PlantillaBaseTaller>
+
+    <HeaderTaller/>
+    
+    <main class="main-contenedor">
+
+        <div class="seccion-encabezado">
+            <span class="seccion-subtitulo">Catálogo Completo</span>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white text-center transition-colors duration-300 mb-2 font-titulo">
+                Nuestros <span class="text-taller-rojo">Servicios</span> Más Frecuentes
+            </h2>
+
+            <p class="text-center text-zinc-600 dark:text-zinc-400 transition-colors duration-300 max-w-2xl mx-auto mb-12">
+                Especialistas en mantener tu vehículo en óptimas condiciones eléctricas.
+            </p>
+        </div>
+
+        <div class="grilla-servicios">
+            
+            {listaServicios.map((servicio) => (
+                <ServicioTaller 
+                    titulo={servicio.titulo}
+                    descripcion={servicio.descripcion}
+                    beneficios={servicio.beneficios}
+                />
+            ))}
+
+        </div>
+    </main>
+
+    <FooterTaller/>
+
+</PlantillaBaseTaller>

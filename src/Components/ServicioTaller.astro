@@ -1,20 +1,43 @@
 
 ---
-const {titulo,descripcion,icono} = Astro.props
+// src/components/ServicioTaller.astro
+
+interface Props {
+
+    titulo: string;
+    descripcion:string;
+    beneficios:string[];
+
+}
+
+const {titulo,descripcion,beneficios}= Astro.props;
+
 ---
 
 <!--Tarjeta de Servicio del sitio E.SOSA-->
 
-<article class="p-6 bg-zinc-900 border-l-4 border-tallerRojo">
+<article class="card-servicio-detalle group">
     
-    <div class="text-3xl mb-4">{icono}</div>
+    <!-- Icono de la tarjeta -->
+    <div class="card-icono-wrapper text-2xl group-hover:bg-taller-rojo group-hover:text-white transition-colors duration-300">
+    </div>
     
-    <h3 class="font-titulo text-2xl text-white mb-2 uppercase">
-        {titulo}
-    </h3>
+    <!-- Titulo de la tarjeta -->
+    <h3 class="text-xl font-bold text-zinc-900 dark:text-white transition-colors duration-300 mb-3">{titulo}</h3>
     
-    <p class="font-cuerpo text-gray-400">
+    <!-- Descripción de la tarjeta -->
+    <p class="text-zinc-600 dark:text-zinc-400 transition-colors duration-300 text-sm leading-relaxed">
         {descripcion}
     </p>
+
+    <!-- Lista de Beneficios -->
+    <ul class="card-lista-beneficios space-y-2 mt-4 text-zinc-700 dark:text-zinc-400 transition-colors duration-300">
+        {beneficios.map((beneficio) => (
+            <li class="card-beneficio-item">
+                <span class="text-taller-rojo">✓</span>
+                <span>{beneficio}</span>
+            </li>
+        ))}
+    </ul>
 
 </article>
