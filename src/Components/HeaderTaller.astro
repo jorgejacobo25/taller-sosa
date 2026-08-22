@@ -1,98 +1,188 @@
 ---
+import { Image } from 'astro:assets';
+import logoTaller from '../Assets/logo-taller.png';
 ---
 
-<!--Header del sitio E.SOSA-->
-<header class="header-dinamico">
+<!-- Cabecera principal del sitio web E.SOSA -->
+<header class="sticky top-0 z-40 bg-gradient-to-r from-taller-rojo via-red-700 to-red-900 dark:from-zinc-950 dark:via-taller-negro dark:to-zinc-900 border-b-2 border-red-950/40 dark:border-taller-rojo/60 shadow-lg transition-colors duration-300">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex justify-between items-center relative z-40">
 
-    <div class="header-layout flex justify-between items-center py-4 px-6 max-w-7xl mx-auto">
-
-        <a href="/" class="relative z-50 block transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(220,38,38,0.6)]">
-            <img 
-                src="/Images/logo.png" 
+        <!-- Identidad del sitio: Logo y Nombre -->
+        <a href="/" class="group flex items-center gap-3 transition-transform duration-300 hover:scale-102">
+            <Image 
+                src={logoTaller} 
                 alt="Logo E.SOSA Electricidad" 
-                class="h-14 sm:h-14 md:h-16 w-auto object-contain rounded-full border-2 border-white shadow-[0_0_15px_rgba(220,38,38,0.4)]"
+                width={88}
+                height={88}
+                format="webp"
+                loading="eager"
+                class="h-10 sm:h-11 w-auto object-contain rounded-full border border-white/80 dark:border-taller-rojo shadow-sm transition-colors duration-300"
             />
+            <div class="flex flex-col">
+                <span class="text-white font-bold text-lg leading-none tracking-wide group-hover:text-zinc-100 transition-colors">
+                    E.SOSA
+                </span>
+                <span class="text-red-100 dark:text-zinc-400 text-xs font-medium tracking-wider uppercase">
+                    Electricidad
+                </span>
+            </div>
         </a>
 
-        <nav class="hidden md:flex gap-8 items-center font-cuerpo font-bold uppercase tracking-wide text-sm">
-            <a href="/" class="nav-enlace">Inicio</a>
-            <a href="/servicios" class="nav-enlace">Servicios</a>
-            <a href="/nosotros" class="nav-enlace">El Taller</a>
-            <a href="/contacto" class="btn-contacto-dinamico">Contacto</a>
-            
-            <button class="btn-cambiar-tema text-white dark:text-gray-300 hover:text-zinc-200 dark:hover:text-taller-rojo transition-colors" aria-label="Cambiar tema">
-                <i class="fa-solid fa-moon text-xl block dark:hidden"></i> <i class="fa-solid fa-sun text-xl hidden dark:block"></i>  </button>
-        </nav>
+        <!-- Navegación y Acciones para Escritorio -->
+        <div class="hidden md:flex items-center gap-6">
 
-        <div class="md:hidden flex items-center gap-4 relative z-50">
-            
-            <button class="btn-cambiar-tema text-white dark:text-gray-300 hover:text-zinc-200 dark:hover:text-taller-rojo transition-colors" aria-label="Cambiar tema">
-                <span class="block dark:hidden"><i class="fa-solid fa-moon text-xl"></i></span>
-                <span class="hidden dark:block"><i class="fa-solid fa-sun text-xl"></i></span>
+            <nav>
+                <ul class="flex items-center gap-6 font-cuerpo font-semibold text-xs tracking-wider uppercase">
+                    <li>
+                        <a href="/" class="text-white hover:text-red-100 dark:text-zinc-300 dark:hover:text-white transition-colors duration-200 py-1 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white dark:after:bg-taller-rojo after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/servicios" class="text-white hover:text-red-100 dark:text-zinc-300 dark:hover:text-white transition-colors duration-200 py-1 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white dark:after:bg-taller-rojo after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300">
+                            Servicios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/nosotros" class="text-white hover:text-red-100 dark:text-zinc-300 dark:hover:text-white transition-colors duration-200 py-1 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white dark:after:bg-taller-rojo after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300">
+                            El Taller
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/contacto" class="bg-white/10 hover:bg-white text-white hover:text-taller-rojo dark:bg-transparent dark:hover:bg-taller-rojo border border-white/80 dark:border-taller-rojo dark:text-white dark:hover:text-white px-3.5 py-1.5 rounded transition-all duration-300 shadow-sm font-bold">
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Selector Interactivo de Tema (Escritorio) -->
+            <button 
+                class="btn-cambiar-tema p-2 rounded-lg text-white/90 hover:text-white hover:bg-white/10 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800/80 border border-transparent hover:border-white/20 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer group" 
+                aria-label="Cambiar tema visual"
+                title="Cambiar modo de luz"
+            >
+                <span class="block dark:hidden group-hover:rotate-12 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+                <span class="hidden dark:block group-hover:rotate-45 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </span>
             </button>
 
-            <button id="btn-menu" class="text-white hover:text-zinc-200 dark:hover:text-taller-rojo transition-colors p-2">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        </div>
+
+        <!-- Controles para Dispositivos Móviles -->
+        <div class="md:hidden flex items-center gap-2 relative z-50">
+            
+            <!-- Selector Interactivo de Tema (Móvil) -->
+            <button 
+                class="btn-cambiar-tema p-2 rounded-lg text-white hover:bg-white/10 dark:text-zinc-300 dark:hover:bg-zinc-800 transition-all duration-300" 
+                aria-label="Cambiar tema visual"
+            >
+                <span class="block dark:hidden">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+                
+                <span class="hidden dark:block">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </span>
+
+            </button>
+
+            <!-- Disparador del Menú Lateral Móvil -->
+            <button 
+                id="btn-menu" 
+                class="p-2 text-white hover:bg-white/10 dark:hover:bg-zinc-800 rounded-lg transition-colors focus:outline-none cursor-pointer"
+                aria-label="Desplegar menú de navegación"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
+
         </div>
 
     </div>
 
-    <div id="menu-lateral" class="menu-lateral-dinamico fixed inset-y-0 right-0 w-64 shadow-2xl transform translate-x-full ease-in-out z-40 md:hidden flex flex-col pt-24 px-8">
-        <ul class="flex flex-col gap-8 font-cuerpo font-bold uppercase tracking-wide text-lg">
-            <li><a href="/" class="enlace-movil-dinamico">Inicio</a></li>
-            <li><a href="/servicios" class="enlace-movil-dinamico">Servicios</a></li>
-            <li><a href="/nosotros" class="enlace-movil-dinamico">El Taller</a></li>
-            <li class="mt-4">
-                <a href="/contacto" class="block text-center bg-taller-rojo text-white px-4 py-3 rounded shadow-[0_0_15px_rgba(220,38,38,0.5)]">Contacto</a>
+    <!-- Menú Desplegable Lateral para Móviles (z-50 fijado para estar sobre todo) -->
+    <div 
+        id="menu-lateral" 
+        class="fixed inset-y-0 right-0 w-64 bg-zinc-50 dark:bg-zinc-950 border-l border-zinc-200 dark:border-taller-rojo/40 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden flex flex-col pt-20 px-6"
+    >
+        <ul class="flex flex-col gap-5 font-cuerpo font-semibold text-zinc-800 dark:text-zinc-200 uppercase tracking-wide text-sm">
+            <li>
+                <a href="/" class="block py-1 hover:text-taller-rojo dark:hover:text-white transition-colors">Inicio</a>
+            </li>
+            <li>
+                <a href="/servicios" class="block py-1 hover:text-taller-rojo dark:hover:text-white transition-colors">Servicios</a>
+            </li>
+            <li>
+                <a href="/nosotros" class="block py-1 hover:text-taller-rojo dark:hover:text-white transition-colors">El Taller</a>
+            </li>
+            <li class="pt-2 border-t border-zinc-200 dark:border-zinc-800">
+                <a href="/contacto" class="block text-center bg-taller-rojo text-white font-bold py-2.5 px-4 rounded shadow-md hover:bg-red-700 transition-colors">
+                    Contacto
+                </a>
             </li>
         </ul>
     </div>
-    
+
 </header>
 
+<!-- Controlador de interacción en el cliente -->
 <script is:inline>
 
-    // 1. Buscamos todos los botones de tema (el de escritorio y el de móvil)
-    const botonesTema = document.querySelectorAll('.btn-cambiar-tema');
-    
-    // 2. Función que chequea el modo actual y lo invierte
-    const alternarTema = () => {
-        const html = document.documentElement;
-        html.classList.toggle('dark');
+    const inicializarHeader = () => {
+        // 1. Control del Cambio de Tema
+        const botonesTema = document.querySelectorAll('.btn-cambiar-tema');
         
-        // Guardamos la decisión del usuario en su navegador para la próxima vez
-        const esOscuro = html.classList.contains('dark');
-        localStorage.setItem('tema', esOscuro ? 'dark' : 'light');
-    };
+        const alternarTema = () => {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const esOscuro = html.classList.contains('dark');
+            localStorage.setItem('tema', esOscuro ? 'dark' : 'light');
+        };
 
-    // 3. Le asignamos la función a los botones cuando hacen clic
-    botonesTema.forEach(boton => boton.addEventListener('click', alternarTema));
-
-    // 4. (Opcional) Al cargar la página, revisamos si ya había elegido un tema antes
-    if (localStorage.getItem('tema') === 'dark' || (!('tema' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-
-    // Astro ejecuta este script del lado del cliente (en el navegador)
-    const btnMenu = document.getElementById('btn-menu');
-    const menuLateral = document.getElementById('menu-lateral');
-
-    // Verificamos que AMBOS elementos existan (que no sean null)
-    if (btnMenu && menuLateral) {
-        
-        // Si existen, recién ahí se les da interactividad
-        btnMenu.addEventListener('click', () => {
-            menuLateral.classList.toggle('translate-x-full');
+        botonesTema.forEach(boton => {
+            boton.removeEventListener('click', alternarTema);
+            boton.addEventListener('click', alternarTema);
         });
 
-    } else {
-        // (Opcional) Un aviso de posible fallo futuro
-        console.warn('No se encontraron los elementos del menú móvil en el DOM.');
-    }
+        // 2. Persistencia del Tema
+        if (localStorage.getItem('tema') === 'dark' || (!('tema' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // 3. Control del Menú Móvil
+        const btnMenu = document.getElementById('btn-menu');
+        const menuLateral = document.getElementById('menu-lateral');
+
+        if (btnMenu && menuLateral) {
+            btnMenu.onclick = (e) => {
+                e.stopPropagation();
+                menuLateral.classList.toggle('translate-x-full');
+            };
+
+            // Cerrar menú si se hace clic fuera de él
+            document.onclick = (e) => {
+                if (!menuLateral.contains(e.target) && !btnMenu.contains(e.target)) {
+                    menuLateral.classList.add('translate-x-full');
+                }
+            };
+        }
+    };
+
+    // Ejecutar al cargar la página
+    inicializarHeader();
+
+    // Soporte para navegación entre páginas en Astro (View Transitions)
+    document.addEventListener('astro:page-load', inicializarHeader);
 
 </script>

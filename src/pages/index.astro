@@ -4,10 +4,14 @@
 import { imageConfig } from "astro:assets"
 import PlantillaBaseTaller from "../Layouts/PlantillaBase-taller.astro"
 
-//Importaciones de Components:
+//Componentes Globales:
 import HeaderTaller from "../Components/HeaderTaller.astro"
 import ServicioTaller from "../Components/ServicioTaller.astro"
 import FooterTaller from "../Components/FooterTaller.astro"
+
+//Componentes exclusivos de la página de inicio
+import BannerInicio from "../Components/Inicio/BannerInicio.astro"
+import SobreTallerInicio from "../Components/Inicio/SobreTallerInicio.astro"
 
 ---
 
@@ -16,6 +20,8 @@ import FooterTaller from "../Components/FooterTaller.astro"
 	<HeaderTaller/>
 
 	<main>
+		<BannerInicio></BannerInicio>
+		<SobreTallerInicio></SobreTallerInicio>
     </main>
 
 	<FooterTaller/>

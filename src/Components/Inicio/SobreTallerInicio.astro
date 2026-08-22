@@ -1,0 +1,95 @@
+---
+// src/Components/Home/SobreTallerInicio.astro
+import { Image } from 'astro:assets';
+// Placeholder: Cambiar por la imagen real del taller/equipo en src/assets/
+import imagenTaller from '../../Assets/servicios/banner.jpg'; 
+---
+
+<!-- Sección Informativa: Sobre el Taller -->
+<section class="py-16 md:py-24 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Columna Izquierda: Imagen del Taller / Instalaciones -->
+            <div class="lg:col-span-5 relative order-2 lg:order-1">
+                <div class="relative rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-lg">
+                    <Image 
+                        src={imagenTaller} 
+                        alt="Instalaciones del taller E.SOSA" 
+                        width={600}
+                        height={450}
+                        format="webp"
+                        loading="lazy"
+                        class="w-full h-80 sm:h-96 object-cover"
+                    />
+                    <!-- Overlay decorativo en la base -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
+                    
+                    <div class="absolute bottom-4 left-4 right-4 p-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-lg border border-zinc-200 dark:border-zinc-700">
+                        <p class="text-xs font-bold uppercase tracking-wider text-taller-rojo">Compromiso y Precisión</p>
+                        <p class="text-sm font-semibold text-zinc-900 dark:text-white">Atención personalizada y equipamiento actualizado</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Información y Trayectoria -->
+            <div class="lg:col-span-7 flex flex-col items-start order-1 lg:order-2">
+                
+                <span class="font-cuerpo font-bold text-taller-rojo tracking-widest uppercase text-xs sm:text-sm mb-3 block">
+                    Conocé Nuestro Taller
+                </span>
+
+                <!-- Título con tipografía font-titulo -->
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-titulo tracking-tight text-zinc-900 dark:text-white leading-tight mb-6 transition-colors duration-300">
+                    Especialistas en <span class="text-taller-rojo">Soluciones Eléctricas</span> Integrales
+                </h2>
+
+                <!-- Textos Descriptivos Placeholder -->
+                <p class="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-4 transition-colors duration-300">
+                    En <strong>E.SOSA Electricidad</strong> nos dedicamos al diagnóstico, mantenimiento y reparación de sistemas eléctricos e inyección electrónica para todo tipo de vehículos y motocicletas.
+                </p>
+
+                <p class="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-8 transition-colors duration-300">
+                    Contamos con instrumental de escaneo computarizado para identificar fallas complejas con exactitud, evitando recambios innecesarios de repuestos y asegurando un trabajo transparente y garantizado.
+                </p>
+
+                <!-- Puntos Clave de Valor -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
+                    
+                    <div class="flex items-start gap-3 p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800">
+                        <div class="w-8 h-8 rounded bg-red-100 dark:bg-red-950/50 text-taller-rojo flex items-center justify-center shrink-0 font-bold">
+                            ✓
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-zinc-900 dark:text-white">Diagnóstico Preciso</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Detección de códigos de error y fallas intermitentes.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800">
+                        <div class="w-8 h-8 rounded bg-red-100 dark:bg-red-950/50 text-taller-rojo flex items-center justify-center shrink-0 font-bold">
+                            ✓
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-zinc-900 dark:text-white">Presupuesto Claro</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Explicación detallada del trabajo antes de iniciar.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botón de Conexión a la Página Nosotros/Historia -->
+                <a href="/nosotros" class="btn-secundario text-sm font-bold inline-flex items-center gap-2">
+                    <span>Más Sobre Nuestra Historia</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

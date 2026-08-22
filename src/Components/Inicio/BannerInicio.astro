@@ -1,0 +1,85 @@
+---
+// src/Components/Inicio/BannerInicio.astro
+import { Image } from 'astro:assets';
+import bannerHero from '../../Assets/servicios/escaneo.jpg';
+---
+
+<!-- Sección Principal: Banner Hero -->
+<section class="relative overflow-hidden py-12 md:py-20 bg-gradient-to-b from-zinc-100 to-zinc-50 dark:from-zinc-950 dark:to-zinc-900 border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Columna Izquierda: Textos y Botones de Acción -->
+            <div class="lg:col-span-7 flex flex-col items-start">
+                
+                <!-- Badge de ubicación y especialidad -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/40 border border-taller-rojo/30 text-taller-rojo text-xs font-bold uppercase tracking-wider mb-6">
+                    <span class="w-2 h-2 rounded-full bg-taller-rojo animate-pulse"></span>
+                    Especialistas en San Luis
+                </div>
+
+                <!-- Título Principal con tipografía font-titulo -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-titulo tracking-tight text-zinc-900 dark:text-white leading-tight mb-6 transition-colors duration-300">
+                    Diagnóstico y Soluciones <span class="text-taller-rojo">Eléctricas</span> de Precisión
+                </h1>
+
+                <!-- Bajada Descriptiva -->
+                <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed max-w-2xl transition-colors duration-300">
+                    Tecnología avanzada en inyección electrónica, arranques y alternadores. Detección precisa de fallas y servicio garantizado para autos y camionetas.
+                </p>
+
+                <!-- Botones de Acción con Íconos -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                    
+                    <!-- Botón Primario: Solicitar Turno con ícono de calendario/reloj -->
+                    <a href="/contacto" class="btn-primario text-sm font-bold shadow-lg flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>Solicitar Turno</span>
+                    </a>
+
+                    <!-- Botón Secundario: Explorar Servicios con ícono de herramientas -->
+                    <a href="/servicios" class="btn-secundario text-sm font-bold flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span>Ver Servicios</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Columna Derecha: Imagen Técnica Optimizada -->
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-taller-rojo to-red-800 rounded-2xl blur-xl opacity-30 dark:opacity-40"></div>
+                
+                <div class="relative bg-white dark:bg-zinc-800 p-2 rounded-2xl border border-zinc-200 dark:border-zinc-700 shadow-xl overflow-hidden">
+                    <Image 
+                        src={bannerHero} 
+                        alt="Diagnóstico de inyección electrónica en taller E.SOSA" 
+                        width={700}
+                        height={500}
+                        format="webp"
+                        loading="eager"
+                        fetchpriority="high"
+                        class="w-full h-80 sm:h-96 object-cover rounded-xl"
+                    />
+                    
+                    <div class="absolute bottom-6 left-6 bg-zinc-900/90 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg border-l-4 border-taller-rojo shadow-lg">
+                        <p class="text-xs font-bold uppercase tracking-wider text-zinc-300">Equipamiento</p>
+                        <p class="text-sm font-semibold">Escaneo Computarizado</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

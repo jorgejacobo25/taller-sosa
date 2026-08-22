@@ -26,6 +26,7 @@
 }
 
 @theme {
+  
   /* Nombramos nuestras fuentes */
   --font-titulo: "Story Script", sans-serif;
   --font-cuerpo: "Montserrat", sans-serif;
@@ -40,14 +41,15 @@
    ========================================= */
 
 @layer base {
+  
     body {
-      /* MODO CLARO: Fondo gris casi blanco, texto oscuro.
-         MODO OSCURO: Fondo asfalto suave (zinc-900), texto blanco. */
-      @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300 min-h-screen flex flex-col;
+      /* MODO CLARO: Gris claro descansado (zinc-50)
+         MODO OSCURO: Suavizado a zinc-900 (asfalto/carbón en lugar de negro puro) */
+      @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 transition-colors duration-300 min-h-screen flex flex-col;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      @apply text-zinc-900 dark:text-white transition-colors duration-300;
+      @apply text-zinc-900 dark:text-zinc-100 transition-colors duration-300;
     }
 
     input, textarea, select {
