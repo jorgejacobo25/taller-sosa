@@ -8,50 +8,66 @@ interface Props {
   descripcion: string;
   imagen: string;
   beneficios: string[];
-  loading?: "eager" | "lazy"; // Opcional: define la prioridad de carga
+  loading?: "eager" | "lazy";
 }
 
 const { titulo, descripcion, imagen, beneficios, loading = "lazy" } = Astro.props;
 
+// Mapeo dinámico de imágenes locales en src/assets/servicios/
 const imagenesDisponibles = import.meta.glob<{ default: ImageMetadata }>('/src/Assets/servicios/*.{jpeg,jpg,png,webp}');
 
 if (!imagenesDisponibles[imagen]) {
-  throw new Error(`"${imagen}" no existe en: "src/Assets/servicios/"`);
+  throw new Error(`La imagen "${imagen}" no existe en "src/assets/servicios/"`);
 }
 ---
 
-<article class="card-servicio-detalle group flex flex-col h-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-800/80 shadow-md dark:shadow-none transition-colors duration-300">
+<article class="group relative pt-8 sm:pt-10 flex flex-col h-full transition-transform duration-300 hover:-translate-y-1.5">
     
-    <div class="h-48 w-full overflow-hidden relative bg-zinc-200 dark:bg-zinc-900">
+    <!-- Contenedor de Imagen Flotante (sobresale de la tarjeta) -->
+    <div class="relative z-10 mx-auto w-[90%] h-44 sm:h-48 rounded-xl overflow-hidden shadow-lg border border-zinc-200/80 dark:border-zinc-700/80 bg-zinc-100 dark:bg-zinc-800">
         <Image 
             src={imagenesDisponibles[imagen]()} 
             alt={titulo} 
             width={600}
             height={400}
             format="webp"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             loading={loading}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent"></div>
+
+        <!-- Overlay sutil con línea de acento -->
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
+        <div class="absolute top-3 right-3 w-2 h-2 rounded-full bg-taller-rojo shadow-[0_0_8px_#dc2626]"></div>
     </div>
     
-    <div class="p-6 flex flex-col flex-grow">
-        <h3 class="text-xl font-bold font-titulo text-zinc-900 dark:text-white transition-colors duration-300 mb-3">
+    <!-- Cuerpo de la Tarjeta (Fondo con padding superior compensado) -->
+    <div class="relative -mt-16 pt-20 px-5 sm:px-6 pb-6 bg-white dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700/60 rounded-2xl shadow-sm dark:shadow-md dark:shadow-black/20 flex flex-col flex-grow transition-colors duration-300">
+        
+        <!-- Título del Servicio -->
+        <h3 class="text-lg sm:text-xl font-bold font-titulo text-zinc-900 dark:text-white transition-colors duration-300 mb-2 leading-snug">
             {titulo}
         </h3>
         
-        <p class="text-zinc-600 dark:text-zinc-400 transition-colors duration-300 text-sm leading-relaxed mb-6">
+        <!-- Descripción Completa -->
+        <p class="text-zinc-600 dark:text-zinc-300 transition-colors duration-300 text-xs sm:text-sm leading-relaxed mb-5">
             {descripcion}
         </p>
 
-        <ul class="space-y-2 mt-auto text-zinc-700 dark:text-zinc-400 transition-colors duration-300 border-t border-zinc-200 dark:border-zinc-700/60 pt-4 text-xs font-semibold">
-            {beneficios.map((beneficio) => (
-                <li class="flex items-center gap-2">
-                    <span class="text-taller-rojo font-bold">✓</span>
-                    <span>{beneficio}</span>
-                </li>
-            ))}
-        </ul>
+        <!-- Lista de Beneficios -->
+        <div class="mt-auto border-t border-zinc-100 dark:border-zinc-700/60 pt-4">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-taller-rojo block mb-2.5">
+                Beneficios
+            </span>
+            <ul class="space-y-1.5 text-xs text-zinc-700 dark:text-zinc-300">
+                {beneficios.map((beneficio) => (
+                    <li class="flex items-start gap-2">
+                        <span class="text-taller-rojo font-bold shrink-0 mt-0.5">✓</span>
+                        <span class="leading-tight text-[12px] sm:text-xs">{beneficio}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
     </div>
 
 </article>

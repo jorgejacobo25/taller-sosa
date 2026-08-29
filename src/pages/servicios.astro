@@ -1,12 +1,18 @@
 ---
+//  src/pages/servicios.astro
+
+// Optimización de Imágenes:
 import { imageConfig } from "astro:assets";
+
+// Importaciones de Layouts:
 import PlantillaBaseTaller from "../Layouts/PlantillaBase-taller.astro";
 
-//Importaciones de Components:
+//Componentes Globales:
 import HeaderTaller from "../Components/HeaderTaller.astro";
 import ServicioTaller from "../Components/ServicioTaller.astro";
 import FooterTaller from "../Components/FooterTaller.astro";
 
+//Importación de la Lista de Servicios:
 import listaServicios from "../Data/servicios.json";
 ---
 
@@ -28,16 +34,16 @@ import listaServicios from "../Data/servicios.json";
     
     </div>
 
-    <div class="grilla-servicios">
-        {listaServicios.map((servicio, index) => (
-            <ServicioTaller 
-                titulo={servicio.titulo}
-                descripcion={servicio.descripcion}
-                imagen={servicio.imagen}
-                beneficios={servicio.beneficios}
-                loading={index < 3 ? "eager" : "lazy"}
-            />
-        ))}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 pt-4">
+      {listaServicios.map((servicio, index) => (
+          <ServicioTaller 
+              titulo={servicio.titulo}
+              descripcion={servicio.descripcion}
+              imagen={servicio.imagen}
+              beneficios={servicio.beneficios}
+              loading={index < 3 ? "eager" : "lazy"}
+          />
+      ))}
     </div>
   </main>
 
